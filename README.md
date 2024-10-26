@@ -1,4 +1,3 @@
-Here’s an enhanced version of your README section with emojis and proper formatting:
 
 ---
 
