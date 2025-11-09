@@ -8,33 +8,32 @@ In the training data, we have the following columns:
 - 🖼️ **Image Link**
 - 🆔 **Group ID**
 - 🏷️ **Entity Name**
-- 🎯 **Target Column**: **Entity Value**
+- 🎯 **Target Column**: Entity Value
 
-Our goal is to extract the **entity value** (e.g., `10gm`, `10W`, `10cm`, etc.) from the pictures with the correct units.
+The objective is to identify and extract numerical entity values with their respective units (e.g., 10gm, 10W, 10cm) directly from images.
 
 ## 🚀 Approach
 
 1. **Image Preprocessing**:  
-   We started by preprocessing the images to enhance text clarity.
+   Images were preprocessed to enhance clarity and improve text detection accuracy.
 
-2. **🧠 Keras for Number & Unit Detection**:  
-   We used [Keras OCR](https://github.com/faustomorales/keras-ocr) to detect both numbers and units like `g`, `W`, and `cm`.
+2. **🔠 OCR-Based Detection**:  
+   [Keras OCR](https://github.com/faustomorales/keras-ocr) was used to detect numeric values and units (g, W, cm), while Pytesseract extracted detailed text including decimals from refined image sections.
+   
+4. **🔍 Text Extraction with Pytesseract**:  
+   I passed specific cross-section images to [Pytesseract](https://github.com/madmaze/pytesseract), ensuring it captured text, including decimal points accurately.
 
-3. **🔍 Text Extraction with Pytesseract**:  
-   We passed specific cross-section images to [Pytesseract](https://github.com/madmaze/pytesseract), ensuring it captured text, including decimal points accurately.
+5. **🧠 NLP Analysis**:  
+   The extracted text was processed using the [DeBERTa Transformer](https://github.com/microsoft/DeBERTa) to accurately identify and extract the correct entity values.
 
-4. **📜 Natural Language Processing**:  
-   After detecting the text from images, we applied **Natural Language Processing** using the [DeBERTa Transformer](https://github.com/microsoft/DeBERTa) to further analyze and extract the correct entity values.
-
-5. **💡 Model Output**:  
-   The final result was obtained after processing the image through **DeBERTa**, giving us the entity value.
+6. **💡 Model Output**:  
+   The pipeline produced precise entity values by combining visual and textual data understanding.
 
 ## 📊 Results
-- **Accuracy**: We achieved **68%** accuracy in extracting the correct entity values.
+- **Accuracy**: **68%** accuracy in extracting the correct entity values.
+- **Average Processing Time:** 1.21 seconds per image
   
-## ⚠️ Demerits
-- **⏳ Processing Time**: The time to process each image is relatively high, averaging **1.21 seconds per image**.
+## ⚠️ Limitation
+- The model’s main drawback is its relatively high processing time per image.
 
----
 
-Let me know if you'd like further adjustments! 😊
